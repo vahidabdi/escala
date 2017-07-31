@@ -41,6 +41,9 @@ defmodule EscalaApi.Mixfile do
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
       {:absinthe_plug, "~> 1.3.1"},
+
+      # In Umbrella
+      {:escala_db, in_umbrella: true},
     ]
   end
 end
