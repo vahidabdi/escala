@@ -22,10 +22,12 @@ defmodule EscalaDb.Accounts.User do
   def changeset(user, params \\ %{}) do
     user
     |> cast(params, [
-        :email, :username, :first_name, :last_name, :picture, :providers, :meta]
-      )
+        :email, :username, :first_name, :last_name, :picture, :providers, :meta
+      ])
     |> validate_required([:email, :providers])
     |> unique_constraint(:email)
     |> unique_constraint(:username)
+    |> validate_length(:username, min: 5)
+    |> validate_format(:username, ~r/\A[a-z]\w+\z/i)
   end
 end

@@ -21,6 +21,27 @@ defmodule EscalaDb.Accounts do
   end
 
   @doc """
+  Gets a single user or returns nil if user does not exist.
+
+  ## Examples
+
+      iex> get_user("457f4850-2716-4541-812c-30b58fac2153")
+      %User{}
+
+      iex> get_user("457f4850-2716-4541-812c-30b58fac2151")
+      nil
+
+  """
+  def get_user(id) do
+    case Ecto.UUID.cast(id) do
+      {:ok, id} ->
+        Repo.get(User, id)
+      _ ->
+        nil
+    end
+  end
+
+  @doc """
   Creates a user.
 
   ## Examples

@@ -27,6 +27,16 @@ defmodule EscalaDb.AccountsTest do
       assert [user] == Accounts.list_users()
     end
 
+    test "get_user/1 returns a signle user with valid id" do
+      new_user = user_fixture()
+      user = Accounts.get_user(new_user.id)
+      assert user.id == new_user.id
+    end
+
+    test "get_user/1 returns nil user with invalid id" do
+      assert nil == Accounts.get_user("invalid")
+    end
+
     test "create_user/1 with valid data creates a user" do
       assert {:ok, %User{} = user} = Accounts.create_user(@valid_attrs)
       assert user.email == "vanda@gmail.com"
@@ -61,6 +71,18 @@ defmodule EscalaDb.AccountsTest do
       dup_username = Enum.into(%{email: "another@email.com"}, @valid_attrs)
       assert {:error, changeset} = Accounts.create_user(dup_username)
       assert "has already been taken" in errors_on(changeset).username
+    end
+
+    test "create_user/1 with invalid username length returns error changeset" do
+      invalid_attrs = %{username: "vand"} |> Enum.into(@valid_attrs)
+      assert {:error, changeset} = Accounts.create_user(invalid_attrs)
+      assert "should be at least 5 character(s)" in errors_on(changeset).username
+    end
+
+    test "create_user/1 with invalid username format returns error changeset" do
+      invalid_attrs = %{username: "1vand@"} |> Enum.into(@valid_attrs)
+      assert {:error, changeset} = Accounts.create_user(invalid_attrs)
+      assert "has invalid format" in errors_on(changeset).username
     end
   end
 end
