@@ -29,15 +29,5 @@ config :escala_db,
 # by uncommenting the line below and defining dev.exs, test.exs and such.
 # Configuration from the imported file will override the ones defined
 # here (which is why it is important to import them last).
-#
-
-config :guardian, Guardian,
-  allowed_algos: ["HS512"], # optional
-  verify_module: Guardian.JWT,  # optional
-  issuer: "EscalaDb",
-  ttl: {1, :year},
-  verify_issuer: true, # optional
-  secret_key: "k02B4EfQyy7pSGWABGrwVC6FdHCtGrWufhb/PswNKBDWIHCtmeX5CKaYQJ7Zm+qS",
-  serializer: EscalaDb.GuardianSerializer
 
 import_config "#{Mix.env}.exs"

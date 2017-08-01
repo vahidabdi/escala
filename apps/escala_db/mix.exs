@@ -51,7 +51,6 @@ defmodule EscalaDb.Mixfile do
       {:oauth2, "~> 0.9.1"},
       {:absinthe, "~> 1.3.2"},
       {:absinthe_ecto, "~> 0.1.0"},
-      {:guardian, "~> 0.14.5"},
     ]
   end
 

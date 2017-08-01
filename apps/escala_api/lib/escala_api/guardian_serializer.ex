@@ -1,4 +1,4 @@
-defmodule EscalaDb.GuardianSerializer do
+defmodule EscalaApi.GuardianSerializer do
   @moduledoc """
   Guardian Serializer
   """

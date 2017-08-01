@@ -40,6 +40,7 @@ defmodule EscalaApi.Mixfile do
       {:phoenix_pubsub, "~> 1.0"},
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
+      {:guardian, "~> 0.14.5"},
       {:absinthe_plug, "~> 1.3.1"},
 
       # In Umbrella
