@@ -3,7 +3,7 @@ defmodule EscalaDb.Repo.Migrations.CreateUsers do
 
   def up do
     execute "CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\" with schema public"
-    create table(:users, primary_key: false) do
+    create table(:accounts_users, primary_key: false) do
       add :id, :uuid, primary_key: true
       add :email, :text, null: false
       add :username, :text
@@ -15,11 +15,11 @@ defmodule EscalaDb.Repo.Migrations.CreateUsers do
 
       timestamps()
     end
-    create unique_index(:users, :email)
-    create unique_index(:users, :username)
+    create unique_index(:accounts_users, :email)
+    create unique_index(:accounts_users, :username)
   end
 
   def down do
-    drop table(:users)
+    drop table(:accounts_users)
   end
 end

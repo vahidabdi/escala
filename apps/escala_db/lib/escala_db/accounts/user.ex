@@ -7,7 +7,7 @@ defmodule EscalaDb.Accounts.User do
   import Ecto.Changeset
 
   @primary_key {:id, :binary_id, autogenerate: true}
-  schema "users" do
+  schema "accounts_users" do
     field :email, :string
     field :username, :string
     field :first_name, :string

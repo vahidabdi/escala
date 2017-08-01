@@ -5,8 +5,8 @@
 #
 #   @behaviour Guardian.Serializer
 #
-#   alias EscalaApi.Accounts
-#   alias EscalaApi.Accounts.User
+#   alias EscalaDb.Accounts
+#   alias EscalaDb.Accounts.User
 #
 #   def for_token(%User{} = user), do: {:ok, "User:#{user.id}"}
 #   def for_token(_), do: {:error, "Unknown resource type"}
