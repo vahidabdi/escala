@@ -21,6 +21,13 @@ defmodule EscalaDb.UserResolverTest do
       assert data.data["currentUser"]["email"] == "test@email.com"
     end
 
+    test "get current_user with invalid id on context returns error" do
+      assert {:ok, _user} = Accounts.create_user(%{email: "test@email.com", providers: ["google"]})
+      assert {:ok, %{errors: error}} = Absinthe.run(@query, EscalaDb.Schema, context: %{current_user: %{id: "invalid_id"}})
+      [res] = error
+      assert res.message == "In field \"currentUser\": User not found"
+    end
+
     test "get current_user without current_user context return error with status 401" do
       assert {:ok, %{errors: error}} = Absinthe.run(@query, EscalaDb.Schema)
       [res] = error
