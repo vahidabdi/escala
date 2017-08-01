@@ -1,4 +1,7 @@
 defmodule EscalaDb.AccountsTest do
+  @moduledoc """
+  Accounts Test module
+  """
   use EscalaDb.DbCase
 
   alias EscalaDb.Accounts
